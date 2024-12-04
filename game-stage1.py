@@ -4,7 +4,7 @@ import time
 health = 10
 start_health = 0
 hooded_figure_health = 10
-sword_ap = 1
+player_attack = 1
 
 go_to_village = 0
 go_to_swamp = 0
@@ -34,6 +34,7 @@ def stage_4_cave():
     if answer == 1 and key == 1:
         print(f"The password is {has_password}. I have also found a key in the swamp, maybe you can tell me what it opens")
         print("She will point at chest in the dark corner of the cave and explains that the key opens the chest.You will get powerful weapon, which  will grant you +2 damage bonus in next stage")
+
     elif answer == 1 and key == 0:
         print(f"The password is {has_password}.")
         print("As a token  I will grant you healing spell")
@@ -310,3 +311,5 @@ if cave == 1:
   stage_4_cave()
   print (f"to the final battle with {health} health")
 
+print ("")
+print("THE GAME HAS ENDED")

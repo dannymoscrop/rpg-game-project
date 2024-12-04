@@ -1,8 +1,9 @@
 player_hp = 11
-has_key = False
-has_password = "key"
 
-def stage_4_cave(player_hp, has_password, has_key):
+def stage_4_cave(player_hp):
+    has_key = False
+    has_password = "key"
+
     print("\nStage 4: The Cave")
     print("You arrived at the entrance of dark cave. Inside you find Agnes, the powerful witch. She asks you for password")
 
@@ -19,5 +20,6 @@ def stage_4_cave(player_hp, has_password, has_key):
         print("She distrust you and refused to help you further")
 
     print("Proceed to stage 5: The Ruins")
-    
-stage_4_cave(player_hp, has_password, has_key)
+    return player_hp
+
+stage_4_cave(player_hp)

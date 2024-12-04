@@ -10,6 +10,9 @@ go_to_village = 0
 go_to_swamp = 0
 answer = 3
 cave = 0
+password = "yes"
+key = 0
+go_to_ruins = 0
 
 def printtext(text):
   wrapped_text = textwrap.wrap(text, width=100)
@@ -19,9 +22,36 @@ def printtext(text):
 def wrap_text(width=100):
     return textwrap.fill(width)
 
+def stage_4_cave():
+    global health
+    #has_key = 0
+    has_password = "key"
+
+    print("\nStage 4: The Cave")
+    print("You arrived at the entrance of dark cave. Inside you find Agnes, the powerful witch. She asks you for password")
+
+#    print (f"{key}")
+    if answer == 1 and key == 1:
+        print(f"The password is {has_password}. I have also found a key in the swamp, maybe you can tell me what it opens")
+        print("She will point at chest in the dark corner of the cave and explains that the key opens the chest.You will get powerful weapon, which  will grant you +2 damage bonus in next stage")
+    elif answer == 1 and key == 0:
+        print(f"The password is {has_password}.")
+        print("As a token  I will grant you healing spell")
+        health = health + 1
+        #print(f"Your HP is now {player_hp}")
+    else:
+        print("I have no password")
+        print("She distrust you and refused to help you further")
+
+    #print("Proceed to stage 5: The Ruins")
+    return #player_hp
+
+
+
 def swamp():
   global health
   global cave
+  global key
 # Swamp Area Intro
   print(wrap_text("You step into a dark swamp."))
   print()
@@ -94,6 +124,7 @@ def swamp():
         print()
         cave = 1
         health = health + 1
+        key = 1
         return
         pass  # Placeholder
     
@@ -140,6 +171,7 @@ def swamp():
 def village():
   global health
   global answer
+  global cave
   text = "You head out of the castle and back towards the village. It is eerily quiet apart the the tapping of a \
   blind womans stick. Her glossy eyes seem to peer into your soul. Speaking as if she knows everything you have ever \
   done. Yes… Yes… I see what you will do. Your path diverges here hero. Answer my riddle and I will show you the way forwards."
@@ -160,6 +192,7 @@ def village():
     print("I am afraid not, the cave is down that path. But are you prepared?")
     answer = 0
     health = health - 2
+    cave = 1
 
   return
 
@@ -200,7 +233,7 @@ King Denethor: We need a hero to face the unknown and save Denethor. Will you ta
     time.sleep(0.5)
     print("")
     text = "The king is relieved, and with his wishes of good luck, you part ways. However, searching for clues \
-costs you -2 HP, as you have no prior information. Eventually, you hear a rumour about a monster guarding the parchment that reveals Agnes's location."
+costs you -2 HP"
     printtext(text)
     print("")
     print("You proceed to the swamp")
@@ -274,3 +307,6 @@ if go_to_swamp == 1:
 
 if cave == 1:
   print (f"to the cave we go with {health} health")
+  stage_4_cave()
+  print (f"to the final battle with {health} health")
+

@@ -1,17 +1,24 @@
 import textwrap
 import time
 
-health = 0
+health = 10
 start_health = 0
 hooded_figure_health = 10
 sword_ap = 1
+
+go_to_village = 0
+go_to_swamp = 0
 
 def printtext(text):
   wrapped_text = textwrap.wrap(text, width=100)
   for line in wrapped_text:
     print(line)
 
-def STAGE_1(health=10):
+def STAGE_1():
+  
+  global health
+  global go_to_village
+  global go_to_swamp
 
   text = "The Kingdom of Denethor was once a peaceful and prosperous land, thriving with life and magic. However, \
 a mysterious curse now drains its vitality, leaving the kingdom in ruins. The people suffer, and the royal family’s power wanes under the curse’s grip. \
@@ -48,6 +55,7 @@ costs you -2 HP, as you have no prior information. Eventually, you hear a rumour
     printtext(text)
     print("")
     print("You proceed to the swamp")
+    go_to_swamp = 1
     health = health -2
 
   if read_input == 2:
@@ -65,6 +73,7 @@ costs you -2 HP, as you have no prior information. Eventually, you hear a rumour
     printtext(text)
     print("")
     print("You proceed to the VILLAGE with +2 HP")
+    go_to_village = 1
     health = health + 2
   
   if read_input == 3:
@@ -85,6 +94,7 @@ intervention. ")
     exit(1)
 
   print(f"You continue your journey with {health} HP")
+  #health_exit_1 = health
   if read_input == 1 or read_input == 2 or read_input == 3:
     print("")
   else:  
@@ -94,4 +104,10 @@ text = "Stage 1: The Royal Audience"
 printtext(text)
 print("")
 STAGE_1()
+print(f"health - {health}")
+
+if go_to_village == 1:
+  print("to the village we go")
+if go_to_swamp == 1:
+  print("to the swamp we go")
 

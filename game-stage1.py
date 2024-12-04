@@ -13,15 +13,12 @@ def printtext(text):
 
 def STAGE_1(health=10):
 
-
   text = "The Kingdom of Denethor was once a peaceful and prosperous land, thriving with life and magic. However, \
 a mysterious curse now drains its vitality, leaving the kingdom in ruins. The people suffer, and the royal family’s power wanes under the curse’s grip. \
 A young adventurer (you) has been summoned by King Denethor to embark on a perilous quest to uncover and defeat the source of the curse. Along the way, \
 you will meet allies and enemies, face challenges, and make choices that shape the destiny of Denethor. Will you lift the curse, or will the kingdom fall into eternal darkness? "
   printtext(text)
   time.sleep(1)
-
-  print("")
 
   text = "You stand in the grand throne room of Castle Denethor. \
 King Denethor, frail and aged, sits on his ornate throne, his crown slightly askew. He looks at you with weary but hopeful eyes. \
@@ -35,7 +32,7 @@ King Denethor: We need a hero to face the unknown and save Denethor. Will you ta
   print("3. Refuse")
 
   read_input = int(input("Please choose an option:   "))
-
+ 
   if read_input == 1:
     print("")
     print("")
@@ -70,6 +67,23 @@ costs you -2 HP, as you have no prior information. Eventually, you hear a rumour
     print("You proceed to the VILLAGE with +2 HP")
     health = health + 2
   
+  if read_input == 3:
+    print("")
+    print("")
+    time.sleep(1)
+    print("You have chosen option 3:")
+    time.sleep(0.5)
+    print("")
+    print("I’m sorry, Your Majesty. This is too great a task for me")
+    time.sleep(0.5)
+    print("")
+    text = ("The king looks devastated, and you leave the throne room. The kingdom’s fate grows darker without your \
+intervention. ")
+    printtext(text)
+    print("")
+    print("END GAME")
+    exit(1)
+
   print(f"You continue your journey with {health} HP")
   if read_input == 1 or read_input == 2 or read_input == 3:
     print("")

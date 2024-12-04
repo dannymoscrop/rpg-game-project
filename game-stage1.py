@@ -8,11 +8,38 @@ sword_ap = 1
 
 go_to_village = 0
 go_to_swamp = 0
+answer = 3
 
 def printtext(text):
   wrapped_text = textwrap.wrap(text, width=100)
   for line in wrapped_text:
     print(line)
+
+def village():
+  global health
+  global answer
+  text = "You head out of the castle and back towards the village. It is eerily quiet apart the the tapping of a \
+  blind womans stick. Her glossy eyes seem to peer into your soul. Speaking as if she knows everything you have ever \
+  done. Yes… Yes… I see what you will do. Your path diverges here hero. Answer my riddle and I will show you the way forwards."
+  printtext(text)
+
+  text = "I open locks yet hold no teeth, Silent I stand, with secrets beneath. Though I am small, I hold great might, \
+  To open doors and grant you sight. What am I?"
+  printtext(text)
+
+  #while True:
+
+  answer = input(" > ").lower()
+  if answer == "key":
+    print("Very good. Go down that path through the swamp, there is a key, if you find it you will be able to claim our Kingdoms sacred sword.") 
+    answer = 1
+    health = health + 1
+  else: 
+    print("I am afraid not, the cave is down that path. But are you prepared?")
+    answer = 0
+    health = health - 2
+
+  return
 
 def STAGE_1():
   
@@ -100,6 +127,8 @@ intervention. ")
   else:  
     print("you have failed to choose correctly")
 
+
+#START
 text = "Stage 1: The Royal Audience"
 printtext(text)
 print("")
@@ -107,7 +136,15 @@ STAGE_1()
 print(f"health - {health}")
 
 if go_to_village == 1:
-  print("to the village we go")
+  print(f"to the village we go with {health} points")
+  village()
+  print(f"exit the village with {health}")
+
+if answer == 1:
+  print(f"To the swamp we go with {health} health")
+if answer == 0:
+  print(f"to the cave we go with {health} health")
+
 if go_to_swamp == 1:
-  print("to the swamp we go")
+  print(f"to the swamp we go with {health} health")
 

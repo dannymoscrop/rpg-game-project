@@ -1,11 +1,14 @@
+#Written by JOHN
+
+  # Import a text wrapper and a pause function
 import textwrap
 import time
 
+  # Variables
 health = 10
 start_health = 0
 hooded_figure_health = 10
 player_attack = 1
-
 go_to_village = 0
 go_to_swamp = 0
 answer = 3
@@ -14,17 +17,18 @@ password = "yes"
 key = 0
 go_to_ruins = 0
 
+  # define a text wrapping function
 def printtext(text):
   wrapped_text = textwrap.wrap(text, width=100)
   for line in wrapped_text:
     print(line)
 
+# Written by Lucia - tidies up and made to fit by JOHN
 def wrap_text(width=100):
     return textwrap.fill(width)
 
 def stage_4_cave():
     global health
-    #has_key = 0
     has_password = "key"
 
     print("\nStage 4: The Cave")
@@ -48,7 +52,7 @@ def stage_4_cave():
     return #player_hp
 
 
-
+# Written by Daniel - Variables chnged to fit by JOHN
 def swamp():
   global health
   global cave
@@ -168,7 +172,7 @@ def swamp():
     else:
         print(wrap_text("Invalid choice! Please type [l], [r], or [f] to proceed."))
 
-
+#Written by James - code changed in places to fit into game by JOHN
 def village():
   global health
   global answer
@@ -197,11 +201,19 @@ def village():
 
   return
 
+# Written by JOHN
+
+  # define the stage_1 function
+
 def STAGE_1():
   
+  # Make variables used in this function .. global
+
   global health
   global go_to_village
   global go_to_swamp
+
+  # displayed text with text formtting and wait functions
 
   text = "The Kingdom of Denethor was once a peaceful and prosperous land, thriving with life and magic. However, \
 a mysterious curse now drains its vitality, leaving the kingdom in ruins. The people suffer, and the royal family’s power wanes under the curse’s grip. \
@@ -215,6 +227,8 @@ King Denethor, frail and aged, sits on his ornate throne, his crown slightly ask
 King Denethor: We need a hero to face the unknown and save Denethor. Will you take up this burden?"
   printtext(text)
 
+  # User inputs
+
   print ("")
   print ("")
   print("1. Agree to Help")
@@ -223,6 +237,8 @@ King Denethor: We need a hero to face the unknown and save Denethor. Will you ta
 
   read_input = int(input("Please choose an option:   "))
  
+  # If statements to "do something" based off user input
+
   if read_input == 1:
     print("")
     print("")
@@ -237,7 +253,6 @@ King Denethor: We need a hero to face the unknown and save Denethor. Will you ta
 costs you -2 HP"
     printtext(text)
     print("")
-    print("You proceed to the swamp")
     go_to_swamp = 1
     health = health -2
 
@@ -255,12 +270,10 @@ costs you -2 HP"
   a powerful sorceress who attempted to combat it. Rumours suggest a Hooded Figure in the eastern ruins is responsible"
     printtext(text)
     print("")
-    print("You proceed to the VILLAGE with +2 HP")
     go_to_village = 1
     health = health + 2
   
   if read_input == 3:
-    print("")
     print("")
     time.sleep(1)
     print("You have chosen option 3:")
@@ -277,22 +290,21 @@ intervention. ")
     exit(1)
 
   print(f"You continue your journey with {health} HP")
-  #health_exit_1 = health
+
   if read_input == 1 or read_input == 2 or read_input == 3:
     print("")
   else:  
     print("you have failed to choose correctly")
 
 
-#START
+  # This is where we start. Variables are taken from each defined function as the code progresses
+
 text = "Stage 1: The Royal Audience"
 printtext(text)
 print("")
 STAGE_1()
-print(f"health - {health}")
 
 if go_to_village == 1:
-  print(f"to the village we go with {health} points")
   village()
   print(f"exit the village with {health}")
 
@@ -303,7 +315,7 @@ if answer == 0:
   print(f"to the cave we go with {health} health")
 
 if go_to_swamp == 1:
-  print(f"to the swamp we go with {health} health")
+  print("")
   swamp()
 
 if cave == 1:
